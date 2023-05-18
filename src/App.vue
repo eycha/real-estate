@@ -21,8 +21,12 @@
   
   <Discount/>
 
-  <Card :rooms="rooms"/>
-  
+  <Card :room="rooms[0]"/>
+  <Card :room="rooms[1]"/>
+  <Card :room="rooms[2]"/>
+  <Card :room="rooms[3]"/>
+  <Card :room="rooms[4]"/>
+  <Card :room="rooms[5]"/>
   
 </template>
 
@@ -38,6 +42,7 @@ export default {
   name: 'App',
   data() {
     return {
+      오브젝트 : { name : 'kim', age : 20},
       clicked : 0,
       rooms : data,
       모달창열렸니 : false,
