@@ -3,35 +3,34 @@
 
   
 
-  <div class="black-bg" v-if="모달창열렸니 == true">
+  <!-- <div class="black-bg" v-if="모달창열렸니 == true">
     <div class="white-bg">
       <h4>{{ rooms[clicked].title}}</h4>
       <p>{{ rooms[clicked].content}}</p>
       <p>{{ rooms[clicked].price}}</p>
       <button @click="모달창열렸니=flase">X</button>
     </div>
-  </div>
+  </div> -->
 
+
+  <Modal :rooms="rooms" :clicked="clicked" :모달창열렸니="모달창열렸니" />
 
   <div class="menu">
     <a v-for="작명 in 메뉴들" :key="작명">{{ 작명 }}</a>
   </div>
   
   <Discount/>
+
+  <Card :rooms="rooms"/>
   
-  <div v-for="(room,i) in rooms" :key="i">
-    <img :src="room.image" class="room-img">
-    <h4 @click="모달창열렸니 = true;
-      clicked = i">
-      {{ room.title }}</h4>
-    <p>{{ room.price }}</p>
-  </div>
   
 </template>
 
 <script>
 import data from './assets/oneroom.js';
 import Discount from './components/Discount.vue';
+import Modal from './components/Modal.vue';
+import Card from './components/Card.vue';
 
 
 
@@ -52,6 +51,8 @@ export default {
   },
   components: {
     Discount : Discount,
+    Modal : Modal,
+    Card : Card,
     
   }
 }
