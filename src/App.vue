@@ -21,12 +21,8 @@
   
   <Discount/>
 
-  <Card :room="rooms[0]"/>
-  <Card :room="rooms[1]"/>
-  <Card :room="rooms[2]"/>
-  <Card :room="rooms[3]"/>
-  <Card :room="rooms[4]"/>
-  <Card :room="rooms[5]"/>
+  <Card :room="rooms[i]" v-for="(room,i) in rooms" :key="i"/>
+  
   
 </template>
 
