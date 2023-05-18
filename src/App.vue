@@ -1,8 +1,8 @@
 <template>
   <div class="black-bg" v-if="모달창열렸니 == true">
     <div class="white-bg">
-      <h4>상세페이지임</h4>
-      <p>상세페이지 내용임</p>
+      <h4>{{ rooms[clicked].title}}</h4>
+      <p>{{ rooms[clicked].content}}</p>
       <button @click="모달창열렸니=flase">X</button>
     </div>
   </div>
@@ -12,9 +12,11 @@
     <a v-for="작명 in 메뉴들" :key="작명">{{ 작명 }}</a>
   </div>
   
-  <div v-for="room in rooms" :key="room.id">
+  <div v-for="(room,i) in rooms" :key="i">
     <img :src="room.image" class="room-img">
-    <h4 @click="모달창열렸니 = true">{{ room.title }}</h4>
+    <h4 @click="모달창열렸니 = true;
+      clicked = i">
+      {{ room.title }}</h4>
     <p>{{ room.price }}</p>
   </div>
   
@@ -29,6 +31,7 @@ export default {
   name: 'App',
   data() {
     return {
+      clicked : 0,
       rooms : data,
       모달창열렸니 : false,
       메뉴들 : ['Home', 'Shop', 'About'],
