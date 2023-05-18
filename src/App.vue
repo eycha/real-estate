@@ -11,47 +11,32 @@
   <div class="menu">
     <a v-for="작명 in 메뉴들" :key="작명">{{ 작명 }}</a>
   </div>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <div>
-    <img src="./assets/room0.jpg" class="room-img">
-    <h4 @click="모달창열렸니 = true">{{ products[0] }}</h4>
-    <p>50 만원</p>
-    <button @click="신고수[0]++">허위매물신고</button> <span>신고수 : {{ 신고수[0] }}</span>
+  
+  <div v-for="room in rooms" :key="room.id">
+    <img :src="room.image" class="room-img">
+    <h4 @click="모달창열렸니 = true">{{ room.title }}</h4>
+    <p>{{ room.price }}</p>
   </div>
-  <div>
-    <img src="./assets/room1.jpg" class="room-img">
-    <h4>{{ products[1] }}</h4>
-    <p>60 만원</p>
-    <button @click="신고수[1]++">허위매물신고</button> <span>신고수 : {{ 신고수[1] }}</span>
-  </div>
-  <div>
-    <img src="./assets/room2.jpg" class="room-img">
-    <h4>{{ products[2] }}</h4>
-    <p>70 만원</p>
-    <button @click="신고수[2]++">허위매물신고</button> <span>신고수 : {{ 신고수[2] }}</span>
-  </div> 
+  
 </template>
 
 <script>
+import data from './assets/oneroom.js';
+
 
 
 export default {
   name: 'App',
   data() {
     return {
+      rooms : data,
       모달창열렸니 : false,
-      신고수 : [0,0,0],
       메뉴들 : ['Home', 'Shop', 'About'],
       products : ['역삼동원룸', '천호동원룸', '마포구원룸'],
     }
   },
   methods : {
-    increase() {
-      this.신고수 += 1;
-    }
-
-
-    
+        
     
   },
   components: {
