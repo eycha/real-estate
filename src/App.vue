@@ -74,20 +74,13 @@ export default {
     
   },
   mounted() {
-
-    if(this.discountPercent > 0) {
-      setInterval(()=> {
+      let discountChange= setInterval(()=> {
         this.discountPercent = this.discountPercent-1;
-        
-      }, 1000)
-
-    
-
-    
-
-    
-  }
-},
+        if(this.discountPercent <= 0) {
+          clearInterval(discountChange);
+        }
+      }, 60000)    
+    },
 }
 </script>
 
