@@ -13,7 +13,7 @@
   </div> -->
 
 
-  <Modal :rooms="rooms" :clicked="clicked" :모달창열렸니="모달창열렸니" />
+  <Modal @closeModal="모달창열렸니=$event" :rooms="rooms" :clicked="clicked" :모달창열렸니="모달창열렸니"/>
 
   <div class="menu">
     <a v-for="작명 in 메뉴들" :key="작명">{{ 작명 }}</a>

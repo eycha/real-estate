@@ -4,7 +4,7 @@
       <h4>{{ rooms[clicked].title}}</h4>
       <p>{{ rooms[clicked].content}}</p>
       <p>{{ rooms[clicked].price}}</p>
-      <!-- <button @click="모달창열렸니=flase">X</button> -->
+      <button @click="close()">X</button>
     </div>
   </div>
 </template>
@@ -17,6 +17,13 @@ export default {
         rooms : Object,
         clicked : Number,
         모달창열렸니 : Boolean,
+    },
+    methods : {
+      
+      close() {
+        this.$emit('closeModal',false)
+      }
+
     }
 }
 </script>
