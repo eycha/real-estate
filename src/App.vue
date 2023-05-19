@@ -21,7 +21,7 @@
   
   <Discount/>
 
-  <Card :room="rooms[i]" v-for="(room,i) in rooms" :key="i"/>
+  <Card @openModal="모달창열렸니=true; clicked=$event"  :room="rooms[i]" v-for="(room,i) in rooms" :key="i"/>
   
   
 </template>

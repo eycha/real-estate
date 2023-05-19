@@ -1,7 +1,7 @@
 <template>
   <div>
     <img :src="room.image" class="room-img">
-    <h4>{{ room.title }}</h4>
+    <h4 @click="send()">{{ room.title }}</h4>
     <p>{{ room.price }}</p>
   </div>
   
@@ -13,8 +13,11 @@ export default {
     name : 'Card',
     props : {
         room:Object,
-
-        
+    },
+    methods : {
+      send() {
+        this.$emit('openModal',this.room.id)
+      }
     }
 
 }
