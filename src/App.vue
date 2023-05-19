@@ -12,14 +12,19 @@
     </div>
   </div> -->
 
+  <transition name="fade">
+    <Modal @closeModal="모달창열렸니=$event" :rooms="rooms" :clicked="clicked" :모달창열렸니="모달창열렸니"/>
+  </transition>
 
-  <Modal @closeModal="모달창열렸니=$event" :rooms="rooms" :clicked="clicked" :모달창열렸니="모달창열렸니"/>
 
   <div class="menu">
     <a v-for="작명 in 메뉴들" :key="작명">{{ 작명 }}</a>
   </div>
   
   <Discount/>
+
+  <button @click="priceSort">가격순정렬</button>
+  <button @click="sortBack">되돌리기</button>
 
   <Card @openModal="모달창열렸니=true; clicked=$event"  :room="rooms[i]" v-for="(room,i) in rooms" :key="i"/>
   
@@ -40,6 +45,7 @@ export default {
     return {
       오브젝트 : { name : 'kim', age : 20},
       clicked : 0,
+      roomsOrigin : [...data],
       rooms : data,
       모달창열렸니 : false,
       메뉴들 : ['Home', 'Shop', 'About'],
@@ -47,7 +53,14 @@ export default {
     }
   },
   methods : {
-        
+    priceSort() {
+      this.rooms.sort(function(a,b) {
+        return a.price -b.price;
+      });
+    },
+    sortBack() {
+      this.rooms = [...this.roomsOrigin];
+    }
     
   },
   components: {
@@ -104,5 +117,14 @@ div {
   margin-top: 40px;
 }
 
+.fade-enter-from {
+  opacity: 0;
+}
+.fade-enter-active {
+  transition: all 1s;
+}
+.fade-enter-to {
+  opacity: 1;
+}
 
 </style>
