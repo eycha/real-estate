@@ -21,7 +21,7 @@
     <a v-for="작명 in 메뉴들" :key="작명">{{ 작명 }}</a>
   </div>
   
-  <Discount/>
+  <Discount v-if="showDiscount == true" :discountPercent="discountPercent"/>
 
   <button @click="priceSort">가격순정렬</button>
   <button @click="sortBack">되돌리기</button>
@@ -39,10 +39,14 @@ import Card from './components/Card.vue';
 
 
 
+
+
 export default {
   name: 'App',
   data() {
     return {
+      showDiscount : true,
+      discountPercent : 20,
       오브젝트 : { name : 'kim', age : 20},
       clicked : 0,
       roomsOrigin : [...data],
@@ -68,9 +72,25 @@ export default {
     Modal : Modal,
     Card : Card,
     
+  },
+  mounted() {
+
+    if(this.discountPercent > 0) {
+      setInterval(()=> {
+        this.discountPercent = this.discountPercent-1;
+        
+      }, 1000)
+
+    
+
+    
+
+    
   }
+},
 }
 </script>
+
 
 <style>
 body {

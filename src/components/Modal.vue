@@ -40,8 +40,17 @@ export default {
       
       close() {
         this.$emit('closeModal',false);
+      },
+      two() {
+        this.$emit('two', this.month);
       }
-
+    },
+    beforeUpdate() {
+    
+      console.log(this.month);
+      if(this.month==2) {
+        alert('2개월은 너무 적소');
+      }
     }
 }
 </script>
